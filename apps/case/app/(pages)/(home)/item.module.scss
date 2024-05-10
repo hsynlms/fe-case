@@ -1,0 +1,38 @@
+.item {
+  cursor: pointer;
+  padding: 8px 12px;
+  user-select: none;
+  box-sizing: border-box;
+
+  & + & {
+    border-top: 1px solid #e7e7e7;
+  }
+
+  &-focused {
+    background-color: #ffffff;
+  }
+
+  &-selected {
+    background-color: #dbf0fe;
+  }
+
+  &-disabled {
+    color: #b2b2b2;
+  }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &-image {
+    border-radius: 6px;
+  }
+
+  &-episodes {
+    font-size: 85%;
+    color: #64748b;
+    font-weight: 500;
+  }
+}

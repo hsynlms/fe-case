@@ -1,0 +1,39 @@
+{
+  "name": "fe-case-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "Huseyin ELMAS",
+  "license": "MIT",
+  "dependencies": {
+    "@fe-case/aral-select": "workspace:*",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "postcss-calc": "^10.0.0",
+    "postcss-discard-comments": "^7.0.0",
+    "postcss-discard-duplicates": "^7.0.0",
+    "postcss-discard-empty": "^7.0.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-merge-rules": "^7.0.0",
+    "postcss-minify-selectors": "^7.0.0",
+    "postcss-normalize": "^10.0.1",
+    "postcss-ordered-values": "^7.0.0",
+    "postcss-preset-env": "^9.5.13",
+    "postcss-selector-not": "^7.0.2",
+    "postcss-sorting": "^8.0.2",
+    "sass": "^1.77.2",
+    "typescript": "^5.4.5"
+  }
+}

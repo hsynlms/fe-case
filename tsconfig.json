@@ -1,0 +1,3 @@
+{
+  "extends": "@fe-case/tsconfig/base.json"
+}

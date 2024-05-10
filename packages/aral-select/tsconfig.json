@@ -1,0 +1,8 @@
+{
+  "extends": "@fe-case/tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+  },
+  "include": ["../types", "*.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}

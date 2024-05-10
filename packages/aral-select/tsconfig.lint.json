@@ -1,0 +1,8 @@
+{
+  "extends": "@greenzy/tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["component"],
+  "exclude": ["node_modules", "dist"]
+}

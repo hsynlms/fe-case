@@ -1,0 +1,23 @@
+{
+  "name": "fe-case",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@8.6.10",
+  "author": "Huseyin ELMAS",
+  "license": "MIT",
+  "devDependencies": {
+    "@fe-case/tsconfig": "workspace:*",
+    "prettier": "^3.2.5",
+    "turbo": "^1.13.3"
+  }
+}

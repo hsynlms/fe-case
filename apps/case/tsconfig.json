@@ -1,0 +1,18 @@
+{
+  "extends": "@fe-case/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@utils": ["utils.ts"],
+    }
+  },
+  "include": [
+    "../../packages/types",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
