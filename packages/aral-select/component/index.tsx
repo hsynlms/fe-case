@@ -100,9 +100,6 @@ export function AralSelect({
 
     setShowMenu(state === 'open')
 
-    const firstItem = menuItems[0]
-    setFocusedItemValue(firstItem ? getItemValue(firstItem) : '')
-
     if (state === 'close') {
       menuRef?.scrollTo({
         top: 0,
@@ -164,6 +161,24 @@ export function AralSelect({
     if (prevMenuItemValues !== nextMenuItemValues) {
       setMenuItems(newItems)
     }
+
+    // set the first item focused instead none
+
+    const focusedItemIndex = newItems.map(getItemValue).indexOf(focusedItemValue)
+
+    // new list already contain the focused item value
+    // no need to change it
+    if (focusedItemIndex >= 0) return
+
+    let valueToBeFocused = ''
+
+    const firstItem = newItems[0]
+
+    if (firstItem) {
+      valueToBeFocused = getItemValue(firstItem)
+    }
+
+    setFocusedItemValue(valueToBeFocused)
 
     searchValue.displayMenu && changeMenuState('open')
   }
