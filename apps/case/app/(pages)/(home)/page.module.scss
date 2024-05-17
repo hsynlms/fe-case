@@ -1,0 +1,12 @@
+.page {
+  &-inner {
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
+
+  &-title {
+    margin-bottom: 12px;
+  }
+}

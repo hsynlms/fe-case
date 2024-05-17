@@ -6,6 +6,8 @@ import { AralSelect } from '@fe-case/aral-select'
 
 import { Item } from './item'
 
+import styles from './page.module.scss'
+
 export const dynamic = 'force-dynamic'
 
 export default function Page(): JSX.Element {
@@ -17,8 +19,8 @@ export default function Page(): JSX.Element {
   }
 
   return (
-    <>
-      <div style={{ marginBottom: 10 }}>
+    <div className={styles['page-inner']}>
+      <div className={styles['page-title']}>
         <strong>Aral Select</strong> component
       </div>
 
@@ -30,6 +32,6 @@ export default function Page(): JSX.Element {
         itemElement={Item}
         isMulti={true}
       />
-    </>
+    </div>
   )
 }
