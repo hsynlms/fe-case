@@ -345,6 +345,8 @@ export function AralSelect({
         case 'ArrowRight': {
           if (selectedItems.length === 0) return
           if (searchValue.value.length > 0) return
+
+          // no item to be focused
           if (event.code === 'ArrowRight' && focusedControlItemValue === '') return
 
           // reset focused menu item value to prevent any selection
@@ -389,10 +391,12 @@ export function AralSelect({
           // means s/he is still typing so skip the focused item selection
           if (event.code === 'Space' && searchValue.value) return
 
+          // if there is no focused item to be selected
+          if (focusedItemIndex < 0) return
+
           event.preventDefault()
 
-          const item = menuItems[focusedItemIndex]
-          if (item) addItemToSelectedList(item)
+          addItemToSelectedList(menuItems[focusedItemIndex] as AralItem)
 
           break
         }
