@@ -20,7 +20,7 @@ export function MultiValues({ items, focusedValue = '' }: MultiValuesProps): JSX
           event.stopPropagation()
           event.preventDefault()
 
-          debugLog(`INFO - the selected item is removed: ${item.text}`)
+          debugLog(`INFO - the selected item is removed by click: ${item.text}`)
 
           removeItemFromSelectedList(item, false)
         }

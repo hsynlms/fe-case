@@ -270,8 +270,16 @@ export function AralSelect({
         case 'Backspace': {
           // if the search input is not empty
           // or the selected item list is empty
-          // there is nothng to remove
+          // there is nothing to remove
           if (searchValue.value || selectedItems.length === 0) return
+
+          if (focusedControlItemIndex >= 0) {
+            const focusedControlItem = selectedItems[focusedControlItemIndex] as AralSelectedItem
+
+            debugLog(`INFO - the selected item is removed by backspace key: #${focusedControlItemIndex} -> ${focusedControlItem.value}`)
+
+            return removeItemFromSelectedList(focusedControlItem, false)
+          }
 
           const lastItem = selectedItems[selectedItems.length - 1] as AralSelectedItem
 
@@ -279,12 +287,12 @@ export function AralSelect({
 
           removeItemFromSelectedList(lastItem, false)
 
-          break;
+          break
         }
         case 'ArrowDown':
         case 'ArrowUp': {
           // arrow up and down keys may cause
-          // blink carret position change
+          // blinking caret position change
           event.preventDefault()
 
           // reset focused control item value to prevent any selection
@@ -381,10 +389,7 @@ export function AralSelect({
           // means s/he is still typing so skip the focused item selection
           if (event.code === 'Space' && searchValue.value) return
 
-          const focusedControlItem = selectedItems.find(x => x.value === focusedControlItemValue)
-          if (focusedControlItem) {
-            return removeItemFromSelectedList(focusedControlItem, false)
-          }
+          event.preventDefault()
 
           const item = menuItems[focusedItemIndex]
           if (item) addItemToSelectedList(item)
@@ -392,6 +397,9 @@ export function AralSelect({
           break
         }
         default:
+          // s/he is typing, set the input opacity to 1
+          setFocusedControlItemValue('')
+
           break
       }
     },
@@ -402,7 +410,6 @@ export function AralSelect({
   )
 
   const onControlMouseDown = (event: MouseEvent<HTMLElement>) => {
-    event.stopPropagation()
     event.preventDefault()
 
     focusSearchInput()
@@ -541,13 +548,15 @@ export function AralSelect({
           </div>
         </div>
 
-        <Menu
-          menuRef={getMenuRef}
-          items={menuItems}
-          noItemsMessage={noItemsMessage}
-          menuElement={menuElement}
-          itemElement={itemElement}
-        />
+        {showMenu && (
+          <Menu
+            menuRef={getMenuRef}
+            items={menuItems}
+            noItemsMessage={noItemsMessage}
+            menuElement={menuElement}
+            itemElement={itemElement}
+          />
+        )}
 
         <HiddenInputs name={name} items={selectedItems} />
       </div>

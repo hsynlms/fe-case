@@ -25,7 +25,6 @@ export function Menu({
     isMulti,
     disableHighlight,
     selectedItems,
-    showMenu,
     focusedItemValue,
     searchValue,
     blockItemHover,
@@ -73,7 +72,7 @@ export function Menu({
   }, [focusedItemValue])
 
   return (
-    <MenuElement menuRef={menuRef} shouldHide={showMenu === false}>
+    <MenuElement menuRef={menuRef}>
       <div
         role={'listbox'}
         aria-multiselectable={isMulti}

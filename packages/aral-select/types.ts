@@ -84,7 +84,6 @@ export type AralInputValue = {
 
 export type AralMenuProps = PropsWithChildren<{
   menuRef: RefCallback<HTMLElement>;
-  shouldHide: boolean;
 }>
 
 export type MenuProps = {
