@@ -251,6 +251,8 @@ export function AralSelect({
 
   const onControlKeyDown = useCallback<ControlProps['onInputKeyDown']>(
     (event: KeyboardEvent<HTMLElement>) => {
+      if (isDisabled) return
+
       const focusedItemIndex = menuItems
         .map(getItemValue)
         .indexOf(focusedItemValue)
@@ -414,6 +416,9 @@ export function AralSelect({
   )
 
   const onControlMouseDown = (event: MouseEvent<HTMLElement>) => {
+    // event triggered by multi-values remove button
+    if (event.defaultPrevented) return
+
     event.preventDefault()
 
     focusSearchInput()

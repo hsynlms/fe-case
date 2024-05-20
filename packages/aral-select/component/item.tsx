@@ -12,6 +12,12 @@ export const Item = forwardRef<HTMLInputElement, AralItemProps>(
     text, isDisabled, isSelected, isFocused,
     highlight, select, deselect, onHover
   }, ref): JSX.Element {
+    const onClick = () => {
+      isSelected
+        ? deselect()
+        : select()
+    }
+
     return (
       <div
         ref={ref}
@@ -25,13 +31,9 @@ export const Item = forwardRef<HTMLInputElement, AralItemProps>(
         role={'option'}
         aria-disabled={isDisabled}
         aria-selected={isSelected}
-        onClick={() => {
-          isSelected
-            ? deselect()
-            : select()
-        }}
-        onMouseMove={onHover}
-        onMouseOver={onHover}
+        onClick={isDisabled ? undefined : onClick}
+        onMouseMove={isDisabled ? undefined : onHover}
+        onMouseOver={isDisabled ? undefined : onHover}
         dangerouslySetInnerHTML={{
           __html: highlight
             ? highlightSearchTermBase(text, highlight)

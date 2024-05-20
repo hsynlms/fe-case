@@ -77,7 +77,10 @@ export function Menu({
         role={'listbox'}
         aria-multiselectable={isMulti}
         onMouseMove={() => setBlockItemHover(false)}
-        onMouseDown={event => event.preventDefault()}
+        onMouseDown={event => {
+          event.stopPropagation()
+          event.preventDefault()
+        }}
       >
         {items.length === 0 && noItemsMessageEl}
 

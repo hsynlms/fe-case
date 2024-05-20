@@ -12,14 +12,15 @@ import styles from './styles.module.scss'
 export function MultiValues({ items, focusedValue = '' }: MultiValuesProps): JSX.Element {
   const { removeItemFromSelectedList, debugLog } = useContext(AralContext)
 
+  const onMouseDown = (event: MouseEvent<HTMLElement>) => {
+    // prevent the menu state change
+    event.preventDefault()
+  }
+
   return (
     <>
       {items.map(item => {
-        const onMouseDown = (event: MouseEvent<HTMLElement>) => {
-          // prevent the menu state change
-          event.stopPropagation()
-          event.preventDefault()
-
+        const onClick = () => {
           debugLog(`INFO - the selected item is removed by click: ${item.text}`)
 
           removeItemFromSelectedList(item, false)
@@ -38,6 +39,7 @@ export function MultiValues({ items, focusedValue = '' }: MultiValuesProps): JSX
                 styles['control-multi-values-remove'],
                 focusedValue === item.value && styles['control-multi-values-remove-focused']
               ])}
+              onClick={onClick}
               onMouseDown={onMouseDown}
             />
           </div>
