@@ -12,6 +12,8 @@ export const Item = forwardRef<HTMLInputElement, AralItemProps>(
     text, item, isDisabled, isSelected, isFocused,
     highlight, select, deselect, onHover
   }, ref): JSX.Element {
+    const episodeCount = Number(item['episode']?.length ?? 0)
+
     return (
       <div
         ref={ref}
@@ -45,7 +47,7 @@ export const Item = forwardRef<HTMLInputElement, AralItemProps>(
             />
 
             <div className={styles['item-episodes']}>
-              {item['episode']?.length ?? '-'} episodes
+              {episodeCount} episode{episodeCount > 1 ? 's' : ''}
             </div>
           </div>
         </div>
