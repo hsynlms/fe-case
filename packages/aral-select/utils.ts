@@ -20,18 +20,19 @@ export const isItemDisabledBase = (item: AralItem) => item['disabled'] === true
 */
 export const highlightSearchTermBase = (text: string, searchTerm: string) => {
   const regexp = new RegExp(searchTerm, 'gi')
-  const match = regexp.exec(escapeRegExp(text))
+  const matches = text.matchAll(regexp)
+  const arr = text.split('')
+  let shift = 0
 
-  if (match !== null) {
-    const arr = text.split('')
+  for (const match of matches) {
     const replace = `<strong>${match[0]}</strong>`.split('')
 
-    arr.splice(match.index, match[0].length, ...replace)
+    arr.splice(match.index + shift, match[0].length, ...replace)
 
-    return arr.join('')
+    shift += replace.length - searchTerm.length
   }
 
-  return text
+  return arr.join('')
 }
 
 /**
